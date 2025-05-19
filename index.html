@@ -7,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="styles.css">
-    
 </head>
 <body>
     <div class="top-bar">
@@ -30,7 +29,17 @@
     <div class="container">
         <div class="header-container">
             <a href="#" class="site-title">Bernie <span>Madoff</span></a>
-            <a href="#" class="x-logo">𝕏</a>
+            <div class="social-icons">
+                <a href="#" class="telegram-logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21.5 4.5L2.5 12.5L21.5 20.5L21.5 4.5"></path>
+                        <path d="M2.5 12.5L10.5 16.5"></path>
+                        <path d="M17.5 7.5L10.5 16.5"></path>
+                        <path d="M10.5 16.5L21.5 4.5"></path>
+                    </svg>
+                </a>
+                <a href="#" class="x-logo">𝕏</a>
+            </div>
         </div>
         
         <div class="article-header">
@@ -48,7 +57,8 @@
                     <h3 class="investment-tip-title">Investment Tip of the Day</h3>
                     <p>Invest into Madoff Investment Securities $MIS</p>
                 </div>
-                <button class="invest-button" onclick="alert('Sorry, your investment has been lost in a Ponzi scheme!')">CA:GNxYv32buvqPS7M2GuXHxSxSN8weEkQiRuD575LXRYvu</button>
+                <button class="invest-button" onclick="copyToClipboard('CA:GNxYv32buvqPS7M2GuXHxSxSN8weEkQiRuD575LXRYvu')">CA:GNxYv32buvqPS7M2GuXHxSxSN8weEkQiRuD575LXRYvu</button>
+                <div id="toast" class="toast">Text copied to clipboard!</div>
             </div>
         </div>
         
@@ -164,5 +174,31 @@
         <p>Ponzi schemes are serious financial crimes that destroy lives and wealth.</p>
         <p>© 2025 Bernie Madoff - Not Actually Financial Advice - All Rights Reserved</p>
     </footer>
+
+    <script>
+        function copyToClipboard(text) {
+            // Create a temporary input element
+            const input = document.createElement('input');
+            input.setAttribute('value', text);
+            document.body.appendChild(input);
+            
+            // Select the text
+            input.select();
+            input.setSelectionRange(0, 99999); // For mobile devices
+            
+            // Copy the text to clipboard
+            document.execCommand('copy');
+            
+            // Remove the temporary element
+            document.body.removeChild(input);
+            
+            // Show the toast notification
+            const toast = document.getElementById("toast");
+            toast.className = "toast show";
+            
+            // Hide the toast after 3 seconds
+            setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+        }
+    </script>
 </body>
 </html>
