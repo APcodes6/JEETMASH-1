@@ -101,7 +101,12 @@ body {
     color: var(--accent);
 }
 
-.x-logo {
+.social-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.x-logo, .telegram-logo {
     width: 40px;
     height: 40px;
     background-color: var(--primary);
@@ -113,6 +118,10 @@ body {
     font-size: 24px;
     color: var(--light);
     text-decoration: none;
+}
+
+.telegram-logo {
+    background-color: #0088cc;
 }
 
 .article-header {
@@ -379,10 +388,9 @@ body {
     color: var(--accent);
 }
 
-
 .invest-button {
     display: block;
-    margin: 20px auto; /* Changed from 20px 0 to 20px auto for horizontal centering */
+    margin: 20px auto;
     background-color: var(--accent);
     color: var(--light);
     font-size: 16px;
@@ -394,15 +402,44 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     text-align: center;
-    width: fit-content; /* Added to make the button only as wide as its content */
+    width: fit-content;
 }
 
 .invest-button:hover {
     background-color: var(--light-accent);
     transform: translateY(-2px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.toast {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: var(--primary);
+    color: var(--light);
+    text-align: center;
+    border-radius: 4px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 16px;
+}
+
+.toast.show {
+    visibility: visible;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
 }
 
 footer {
@@ -417,9 +454,7 @@ footer p {
     margin-bottom: 10px;
 }
 
-
 /* CSS FOR TOP INVESTMENT BANNER */
-
 .investment-banner {
     background-color: var(--light-gray);
     border-bottom: 1px solid var(--border);
@@ -457,29 +492,6 @@ footer p {
     margin-bottom: 10px;
     color: var(--accent);
     font-size: 1.3em;
-}
-
-.invest-button {
-    display: block;
-    margin: 0 auto;
-    background-color: var(--accent);
-    color: var(--light);
-    font-size: 16px;
-    font-weight: 600;
-    padding: 12px 25px;
-    border-radius: 4px;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-align: center;
-    width: fit-content;
-}
-
-.invest-button:hover {
-    background-color: var(--light-accent);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Responsive adjustments */
@@ -546,4 +558,5 @@ footer p {
 .label.breaking {
     background-color: var(--secondary);
     color: var(--light);
+}
 }
